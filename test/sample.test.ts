@@ -1,4 +1,3 @@
-// import { expect } from "chai";
 import { ethers } from "hardhat";
 import chai from 'chai';
 import { solidity } from "ethereum-waffle";
@@ -35,7 +34,7 @@ describe("NFTMarket", function () {
     let items = await market.fetchMarketItems();
     items = await Promise.all(items.map(async (i: any) => {
       const tokenURI = await nft.tokenURI(i.tokenId);
-      let item = {
+      const item = {
         price: i.price.toString(),
         tokenID: i.tokenId.toString(),
         seller: i.seller,
