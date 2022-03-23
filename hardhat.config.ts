@@ -1,14 +1,10 @@
 import "@nomiclabs/hardhat-waffle";
 import "hardhat-typechain";
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const readFileSync = require("fs");
+import { HardhatUserConfig } from "hardhat/config";
+import { readFileSync } from "fs";
 const privateKey = readFileSync(".secret").toString();
 
-console.log(process.env.PRIVATE_KEY);
-console.log('private key ', privateKey);
-
-const config = {
+const config: HardhatUserConfig = {
   networks: {
       hardhat: {},
   rinkeby: {

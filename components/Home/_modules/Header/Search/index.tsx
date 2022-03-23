@@ -5,7 +5,7 @@ const Search = () => {
     <div>
       <input
         type="search"
-        placeholder="Search"
+        placeholder="	&#x1F50E; Search"
         className="w-96 bg-transparent border-2 border-[#ffa503] py-2 rounded-md px-10 outline-none text-white"
       />
     </div>

@@ -16,7 +16,7 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx","./scripts", "./test", "components/CreateNft/index.tsx,src", "hardhat.config.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx","./scripts", "./test",],
   "exclude": ["node_modules"],
-  "files": ["hardhat.config.js"]
+  "files": ["./hardhat.config.ts"]
 }

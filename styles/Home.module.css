@@ -1,5 +1,5 @@
 .homeBg {
-  background-image: url("./../assets/images/landing-image.png");
+  background-image: url('../public/static/landing-image.png');
   background-size: cover, contain;
   background-position: center, right bottom;
   background-repeat: no-repeat, no-repeat;
