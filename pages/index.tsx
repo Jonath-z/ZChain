@@ -1,9 +1,13 @@
 import type { NextPage } from 'next'
 import HomePage from '../components/Home';
+import MetaData from '../modules/MetaData/Head';
 
 const Home: NextPage = () => {
   return (
-    <HomePage />
+    <>
+      <MetaData content="ZChain home"/>
+      <HomePage />
+    </>
   );
 }
 

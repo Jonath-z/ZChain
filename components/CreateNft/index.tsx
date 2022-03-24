@@ -104,6 +104,7 @@ const CreateNft = () => {
   }
 
   return (
+    <>
     <div className="h-screen bg-black">
       <Header background='bg-black' activeMenu="create nft" onChange={search} isSearchAvailabe={false}/>
       <div className="flex flex-col w-full justify-center 2xl:mt-32 lg:mt-32 items-center">
@@ -163,7 +164,8 @@ const CreateNft = () => {
           </button>
         </div>
       </div>
-    </div>
+      </div>
+      </>
   );
 };
 

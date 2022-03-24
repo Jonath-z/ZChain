@@ -8,7 +8,8 @@ import NFT from '../artifacts/contracts/NFT.sol/NFT.json';
 import axios from 'axios';
 
 const loadAllNFts = async () => {
-    const provider = new ethers.providers.JsonRpcProvider();
+  const url = process.env.NODE_ENV === "production" ? "https://rinkeby.infura.io/v3/7100c075ab2d434bb74187580c4bb49b" : "http://localhost:8545"
+    const provider = new ethers.providers.JsonRpcProvider(url);
     const tokenContract = new ethers.Contract(
       nftAddress,
       NFT.abi,
