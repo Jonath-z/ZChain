@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IProps {
-  onChange: (e:unknown) => void;
+  onChange: (e: unknown) => void;
 }
 
 const Search = ({ onChange }: IProps) => {

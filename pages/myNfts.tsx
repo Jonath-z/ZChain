@@ -6,7 +6,7 @@ import MetaData from '../modules/MetaData/Head';
 const MyNfts: NextPage = () => {
     return (
         <>
-            <MetaData content="ZChain My NFTs"/>
+            <MetaData content="ZChain My NFTs" title="My NFTs"/>
             <MyItems />
         </>
     );

@@ -5,7 +5,7 @@ import MetaData from '../modules/MetaData/Head';
 const Home: NextPage = () => {
   return (
     <>
-      <MetaData content="ZChain home"/>
+      <MetaData content="ZChain home" title="Home"/>
       <HomePage />
     </>
   );

@@ -3,12 +3,14 @@ import Head from 'next/head';
 
 interface IProps{
   content: string
+  title: string
 }
 
-const MetaData = ({content}: IProps) => {
+const MetaData = ({content, title}: IProps) => {
   return (
     <Head>
       <meta name="description" content={content} />
+      <title>{title}</title>
     </Head>
   );
 }

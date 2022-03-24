@@ -6,7 +6,7 @@ import MetaData from '../modules/MetaData/Head'
 const Market: NextPage = () => {
     return (
         <>
-            <MetaData content="ZChain-Market" />
+            <MetaData content="ZChain-Market" title="Market"/>
             <MarketPage />
         </>
     );

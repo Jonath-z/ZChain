@@ -6,7 +6,7 @@ import MetaData from '../modules/MetaData/Head';
 const Mint: NextPage = () => {
     return (
         <>
-            <MetaData content="ZChain Create NFt"/>
+            <MetaData content="ZChain Create NFt" title="Create NFT"/>
             <CreateNft />
         </>
     );
