@@ -30,11 +30,11 @@ const CreateNft = () => {
     const file = e.target.files[0];
     try {
       const added = await client.add(file, {
-        progress: (prog) => console.log('received', prog, '%'),
+        progress: (prog) =>  prog,
       });
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       setFileUrl(url);
-      console.log(url);
+      // console.log(url);
     } catch (e) {
       console.log(e);
     }
@@ -59,7 +59,7 @@ const CreateNft = () => {
   };
 
   const createItemForSale = async (url: string) => {
-    console.log(url);
+    // console.log(url);
     const web3modal = new Web3Modal();
     const connection = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -73,7 +73,7 @@ const CreateNft = () => {
     const event = transaction.events[0];
     const tokenId = event.args[2].toNumber();
 
-    console.log('tokenId', tokenId);
+    // console.log('tokenId', tokenId);
 
     const price = ethers.utils.parseUnits(formInput.price, 'ether');
 
@@ -100,7 +100,8 @@ const CreateNft = () => {
   };
 
   const search = (e: any) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
+    return;
   }
 
   return (
@@ -156,12 +157,12 @@ const CreateNft = () => {
               alt="digital art"
             />
           )}
-          <button
-            onClick={createItem}
-            className="font-bold mt-4 bg-[#ffa503] rounded p-4 shadow-lg w-full hover:bg-[#ffcb62]"
-          >
-            Create Digital Art
-          </button>
+            { fileUrl && <button
+              onClick={createItem}
+              className="font-bold mt-4 bg-[#ffa503] rounded p-4 shadow-lg w-full hover:bg-[#ffcb62]"
+            >
+              Create Digital Art
+            </button>}
         </div>
       </div>
       </div>

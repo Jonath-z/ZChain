@@ -98,7 +98,7 @@ const Items = () => {
                         buyNft(nft, loadNfts);
                         setIsZoomed(false);
                       }}>
-                      Purchace
+                      Purchase
                     </button>
                     <div>
                       <MdOutlineZoomOutMap

@@ -34,7 +34,7 @@ const Zoom = ({nft, loadNfts, canBuy}: IProps) => {
                     {
                         canBuy && <div className="flex justify-between items-center">
                         <button className="bg-[#ffa503] py-3 px-20 my-3 w-full rounded-lg" onClick={() => buyNft(nft, loadNfts)}>
-                            Purchace
+                            Purchase
                         </button>
                     </div>
                     }
