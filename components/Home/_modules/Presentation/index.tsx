@@ -34,7 +34,7 @@ const Presentation = () => {
         className="bg-[#ffa503] w-48 py-3 my-10  text-black rounded-md hover:bg-opacity-80"
         onClick={() => route.push('/mint')}
       >
-        Create Your Nft now
+        Mint Your Nft now
       </button>
     </div>
   );
