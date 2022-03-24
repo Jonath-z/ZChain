@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { ethers } from 'ethers';
-import { create as ipfsHttpClient, Options } from 'ipfs-http-client';
+import { create as ipfsHttpClient } from 'ipfs-http-client';
 import { useRouter } from 'next/router';
 import Web3Modal from 'web3modal';
 import { nftAddress, nftMarketplaceAddress } from '../../config';
 import NFT from '../../artifacts/contracts/NFT.sol/NFT.json';
 import MARKET from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json';
+import Header from '../Home/_modules/Header';
 
 const client = ipfsHttpClient({ 
   host: 'ipfs.infura.io',
   port: 5001,
   protocol: 'https',
   headers: {
-    authorization: '7100c075ab2d434bb74187580c4bb49b'
+    authorization: process.env.IPFS_AUTH as string,
   }
 });
 
@@ -53,7 +53,6 @@ const CreateNft = () => {
       const added = await client.add(data);
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       createItemForSale(url);
-      // console.log(url);
     } catch (e) {
       console.log(e);
     }
@@ -100,51 +99,70 @@ const CreateNft = () => {
     router.push('/market');
   };
 
+  const search = (e: any) => {
+    console.log(e.target.value);
+  }
+
   return (
-    <div>
-      <input
-        placeholder="Nft Name"
-        className="mt-8 border rounded-md p-4"
-        onChange={(e) =>
-          setFormInput({ ...formInput, name: e.target.value })
-        }
-      />
-      <textarea
-        placeholder="Nft desciption"
-        className="mt-2 border rounded p-4"
-        onChange={(e) =>
-          setFormInput({ ...formInput, description: e.target.value })
-        }
-      />
-      <input
-        placeholder="price in ether"
-        className="mt-2 border rounded p-4"
-        onChange={(e) =>
-          setFormInput({ ...formInput, price: e.target.value })
-        }
-      />
-      <input
-        type="file"
-        name="nft"
-        className="my-4"
-        onChange={onChange}
-      />
-      {fileUrl && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={fileUrl}
-          className="rounded mt-4"
-          width="130"
-          height="130"
-          alt="digital art"
-        />
-      )}
-      <button
-        onClick={createItem}
-        className="font-bold mt-4 bg-[#ffa503] rounded p-4 shadow-lg"
-      >
-        Create Digital Art
-      </button>
+    <div className="h-screen bg-black">
+      <Header background='bg-black' activeMenu="create nft" onChange={search} isSearchAvailabe={false}/>
+      <div className="flex flex-col w-full justify-center 2xl:mt-32 lg:mt-32 items-center">
+        <div className="w-96 xsm:w-80 sm:w-80 m-auto">
+          <input
+            placeholder="Nft Name"
+            className="mt-8 border rounded-md p-4 w-full bg-transparent text-white border-[#ffa503]"
+            onChange={(e) =>
+              setFormInput({ ...formInput, name: e.target.value })
+            }
+          />
+          <textarea
+            placeholder="Nft desciption"
+            className="mt-2 border rounded p-4 w-full border-[#ffa503] bg-transparent text-white"
+            onChange={(e) =>
+              setFormInput({ ...formInput, description: e.target.value })
+            }
+          />
+          <input
+            placeholder="price in ether"
+            className="mt-2 border rounded p-4 w-full border-[#ffa503] bg-transparent text-white"
+            onChange={(e) =>
+              setFormInput({ ...formInput, price: e.target.value })
+            }
+          />
+          <input
+            type="file"
+            name="nft"
+            className="my-4 w-full border py-2 form-control
+            block
+            px-3
+            text-base
+            font-normal
+            border-[#ffa503] bg-transparent text-white
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:border-[#ffa503] focus:outline-none"
+            onChange={onChange}
+          />
+          {fileUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={fileUrl}
+              className="rounded mt-4"
+              width="130"
+              height="130"
+              alt="digital art"
+            />
+          )}
+          <button
+            onClick={createItem}
+            className="font-bold mt-4 bg-[#ffa503] rounded p-4 shadow-lg w-full hover:bg-[#ffcb62]"
+          >
+            Create Digital Art
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
