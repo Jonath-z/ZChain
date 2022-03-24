@@ -74,7 +74,7 @@ const CreateNft = () => {
 
     // console.log('tokenId', tokenId);
 
-    const price = ethers.utils.parseUnits(formInput.price, 'ether');
+    const price = ethers.utils.parseUnits(formInput.price.trim(), 'ether');
 
     contract = new ethers.Contract(
       nftMarketplaceAddress,
@@ -131,6 +131,7 @@ const CreateNft = () => {
               }
             />
             <input
+              type="number"
               placeholder="price in ether"
               className="mt-2 border rounded p-4 w-full border-[#ffa503] bg-transparent text-white"
               onChange={(e) =>
