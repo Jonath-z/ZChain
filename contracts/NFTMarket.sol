@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
+import '@openzeppelin/contracts/utils/Counters.sol';
+import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
 contract NFTMarket is ReentrancyGuard {
     using Counters for Counters.Counter;
@@ -48,10 +48,10 @@ contract NFTMarket is ReentrancyGuard {
         uint256 tokenId,
         uint256 price
     ) public payable nonReentrant {
-        require(price > 0, "Price must be at least 1 wei");
+        require(price > 0, 'Price must be at least 1 wei');
         require(
             msg.value == listingPrice,
-            "Price must be equal to listing price"
+            'Price must be equal to listing price'
         );
 
         _itemIds.increment();
@@ -67,7 +67,11 @@ contract NFTMarket is ReentrancyGuard {
             false
         );
 
-        IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
+        IERC721(nftContract).transferFrom(
+            msg.sender,
+            address(this),
+            tokenId
+        );
 
         emit MarketItemCreated(
             itemId,
@@ -90,28 +94,39 @@ contract NFTMarket is ReentrancyGuard {
 
         require(
             msg.value == price,
-            "Please submit the asking price in order to complete the purchase"
+            'Please submit the asking price in order to complete the purchase'
         );
 
         idToMarketItem[itemId].seller.transfer(msg.value);
 
-        IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
+        IERC721(nftContract).transferFrom(
+            address(this),
+            msg.sender,
+            tokenId
+        );
         idToMarketItem[itemId].owner = payable(msg.sender);
         idToMarketItem[itemId].sold = true;
         _itemsSold.increment();
         payable(owner).transfer(listingPrice);
     }
 
-    function fetchMarketItems() public view returns (MarketItem[] memory) {
+    function fetchMarketItems()
+        public
+        view
+        returns (MarketItem[] memory)
+    {
         uint256 itemCount = _itemIds.current();
-        uint256 unsoldItemCount = _itemIds.current() - _itemsSold.current();
+        uint256 unsoldItemCount = _itemIds.current() -
+            _itemsSold.current();
         uint256 currentIndex = 0;
 
         MarketItem[] memory items = new MarketItem[](unsoldItemCount);
         for (uint256 i = 0; i < itemCount; i++) {
             if (idToMarketItem[i + 1].owner == address(0)) {
                 uint256 currentId = idToMarketItem[i + 1].itemId;
-                MarketItem storage currentItem = idToMarketItem[currentId];
+                MarketItem storage currentItem = idToMarketItem[
+                    currentId
+                ];
 
                 items[currentIndex] = currentItem;
                 currentIndex += 1;
@@ -136,7 +151,9 @@ contract NFTMarket is ReentrancyGuard {
         for (uint256 i = 0; i < totalItemCount; i++) {
             if (idToMarketItem[i + 1].owner == msg.sender) {
                 uint256 currentId = idToMarketItem[i + 1].itemId;
-                MarketItem storage currentItem = idToMarketItem[currentId];
+                MarketItem storage currentItem = idToMarketItem[
+                    currentId
+                ];
 
                 items[currentIndex] = currentItem;
                 currentIndex += 1;
@@ -145,7 +162,11 @@ contract NFTMarket is ReentrancyGuard {
         return items;
     }
 
-    function fetchItemsCreated() public view returns (MarketItem[] memory) {
+    function fetchItemsCreated()
+        public
+        view
+        returns (MarketItem[] memory)
+    {
         uint256 totalItemCount = _itemIds.current();
         uint256 itemCount = 0;
         uint256 currentIndex = 0;
@@ -161,7 +182,9 @@ contract NFTMarket is ReentrancyGuard {
         for (uint256 i = 0; i < totalItemCount; i++) {
             if (idToMarketItem[i + 1].seller == msg.sender) {
                 uint256 currentId = idToMarketItem[i + 1].itemId;
-                MarketItem storage currentItem = idToMarketItem[currentId];
+                MarketItem storage currentItem = idToMarketItem[
+                    currentId
+                ];
 
                 items[currentIndex] = currentItem;
                 currentIndex += 1;
