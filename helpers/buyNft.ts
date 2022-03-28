@@ -29,16 +29,21 @@ const buyNft = async (
         'ether'
     );
 
-    const transaction = await contract.createMarketSale(
-        nftAddress,
-        nft.tokenId,
-        {
-            value: price
-        }
-    );
+    try {
 
-    await transaction.wait();
-    loadNFts();
+        const transaction = await contract.createMarketSale(
+            nftAddress,
+            nft.tokenId,
+            {
+                value: price
+            }
+        );
+
+        await transaction.wait();
+        loadNFts();
+    } catch (e) {
+        console.log(e);
+    }
 };
 
 export default buyNft;
