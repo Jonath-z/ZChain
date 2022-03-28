@@ -111,7 +111,10 @@ const CreateNft = () => {
           onChange={search}
           isSearchAvailabe={false}
         />
-        <div className="flex flex-col w-full justify-center 2xl:mt-32 lg:mt-32 items-center">
+        <div
+          className="flex flex-col w-full
+        justify-center 2xl:mt-32 lg:mt-32 items-center"
+        >
           <div className="w-96 xsm:w-80 sm:w-80 m-auto">
             <input
               placeholder="Nft Name"

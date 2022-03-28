@@ -61,7 +61,7 @@ const Menu = ({ className, py, activeMenu }: IMenuClass) => {
         <Link href="/myNfts">My NFTs</Link>
       </li>
       <li className={`${py} ${createNftActive}`}>
-        <Link href="/mint">Create NFT</Link>
+        <Link href="/mint">Mint an NFT</Link>
       </li>
     </ul>
   );
