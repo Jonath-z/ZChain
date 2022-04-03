@@ -138,7 +138,7 @@ const Items = () => {
           </div>
         </div>
         {isZoomed && (
-          <div className="absolute bg-black bg-opacity-90 top-0 left-0 right-0 bottom-0 flex justify-center items-center overflow-scroll">
+          <div className="absolute bg-black bg-opacity-90 top-0 left-0 right-0 bottom-0 w-full h-screen flex justify-center items-center overflow-scroll">
             <HiOutlinePlus
               className="text-white absolute right-10 top-10 text-xl rotate-45 cursor-pointer"
               onClick={toggleZoom}
