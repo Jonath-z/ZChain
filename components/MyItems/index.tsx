@@ -139,7 +139,7 @@ const MyItems = () => {
                   <img
                     src={nft.image}
                     alt="nft-image"
-                    className="w-fill rounded-md"
+                    className="w-fill rounded-md h-60 object-cover"
                   />
                   <div className="text-white py-3">
                     <p className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-white to-[#ffa503] nft-name">
@@ -173,7 +173,7 @@ const MyItems = () => {
           </div>
         </div>
         {isZoomed && (
-          <div className="absolute bg-black bg-opacity-90 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
+          <div className="absolute bg-black bg-opacity-90 top-0 left-0 right-0 bottom-0 w-full h-screen flex justify-center items-center overflow-scroll">
             <HiOutlinePlus
               className="text-white absolute right-10 top-10 text-xl rotate-45 cursor-pointer"
               onClick={toggleZoom}
