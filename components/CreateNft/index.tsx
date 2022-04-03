@@ -125,7 +125,7 @@ const CreateNft = () => {
 
   return (
     <>
-      <div className="h-screen bg-black overflow-scroll pb-10">
+      <div className="h-screen bg-black overflow-auto pb-10">
         <Header
           background="bg-black"
           activeMenu="create nft"
