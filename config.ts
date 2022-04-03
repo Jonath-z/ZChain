@@ -1,7 +1,7 @@
 export const nftAddress =
-  '0xc208a760F2d8809cc779BCF3bE39EDd4358B3c7f';
+  '0x065EB5e4D854DAa37B47e418C75358293c61035b';
 export const nftMarketplaceAddress =
-  '0x3658Ef8cB0504A21ad1e0CeD2936F05B7E4dBA8a';
+  '0xDcE5834Bae4bbA154A9768fDc5cfcc36B786CF19';
 
 ///////////////////////////LOCAL NODE /////////////////////////
 // export const nftAddress =
